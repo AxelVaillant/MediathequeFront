@@ -1,0 +1,19 @@
+.img{
+    margin-left: auto;
+margin-right: auto;
+display: block;
+height: 850px;
+    background-image: url(C:\Users\axelv\Documents\Code\Angular\MediathequeFront\homepage.jpg);
+}
+.titre{
+    font-size: 8em;
+}
+h1{
+    margin:auto;
+    margin-top: 30px;
+    background-color: rgba(105, 102, 102, 0.521);
+    width: 750px;
+    text-align:center;
+    font-size: 1.6em;
+    border-radius: 10px ;
+}

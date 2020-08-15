@@ -1,0 +1,14 @@
+<h1>Ajouter Rôle</h1>
+<div class= "container" style=" border-radius: 10px;">
+<form>
+
+    <div class="form-group">
+        <label for="nomRole">Nom</label>
+        <input name="nomRole" type="text" class="form-control"  [(ngModel)]="newRole.nomRole" >
+      </div>
+
+
+
+      <button type="submit" (click)="createRole()" class="btn btn-primary">Ajouter</button>
+</form>
+</div>

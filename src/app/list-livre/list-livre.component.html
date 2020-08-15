@@ -1,0 +1,26 @@
+
+<h1>Liste des Livres</h1>
+<table class="table table-striped" id="t1">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Description</th>
+            <th scope="col">Quantité</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let unLivre of listLivre">
+            <td>{{unLivre.idlivre}}</td>
+            <td>{{unLivre.nomlivre}}</td>
+            <td>{{unLivre.auteur}}</td>
+            <td>{{unLivre.description}}</td>
+            <td>{{unLivre.quantite}}</td>
+            <td>
+                <a [routerLink] = "['update/'+unLivre.idlivre]" class="btn btn-primary btn-sm"> Modifier </a>
+                <a type="submit" class="btn btn-danger btn-sm" (click)='deletelivre(unLivre.idlivre)' name="unLivre.idlivre" >Supprimer</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

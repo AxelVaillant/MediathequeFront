@@ -1,0 +1,16 @@
+<h1>Statut</h1>
+<table class="table table-striped" id="t1">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let unRole of listRole">
+            <td>{{unRole.idRole}}</td>
+            <td>{{unRole.nomRole}}</td>
+
+        </tr>
+    </tbody>
+</table>

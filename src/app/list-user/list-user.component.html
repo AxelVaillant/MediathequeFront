@@ -1,0 +1,28 @@
+
+<h1>Liste des Utilisateurs</h1>
+<table class="table table-striped" id="t1">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Login</th>
+            <th scope="col">Mot de passe</th>
+            <th scope="col">Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let unUser of listUser">
+            <td>{{unUser.iduser}}</td>
+            <td>{{unUser.nom}}</td>
+            <td>{{unUser.prenom}}</td>
+            <td>{{unUser.login}}</td>
+            <td>{{unUser.password}}</td>
+            <td>{{unUser.role.nomRole}}</td>
+            <td>
+                <a [routerLink] = "['update/'+unUser.iduser]" class="btn btn-primary btn-sm"> Modifier </a>
+                <a type="submit" class="btn btn-danger btn-sm" (click)='deleteUser(unUser.iduser)' name="unUser.iduser" >Supprimer</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
