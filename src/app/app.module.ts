@@ -14,7 +14,11 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { CreateLivreComponent } from './create-livre/create-livre.component';
 import { ListLivreComponent } from './list-livre/list-livre.component';
 import { UpdateLivreComponent } from './update-livre/update-livre.component';
-
+import { LoginComponent } from './login/login.component';
+import { ListNotifComponent } from './list-notif/list-notif.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,9 @@ import { UpdateLivreComponent } from './update-livre/update-livre.component';
     UpdateUserComponent,
     CreateLivreComponent,
     ListLivreComponent,
-    UpdateLivreComponent
+    UpdateLivreComponent,
+    LoginComponent,
+    ListNotifComponent
   ],
   imports: [
     BrowserModule,

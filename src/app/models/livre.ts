@@ -1,5 +1,5 @@
 export class Livre{
-    idlivre:number;
+    idLivre:number;
     nomlivre:string;
     auteur:string;
     description:string;

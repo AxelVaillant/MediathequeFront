@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Livre } from '../models/livre';
 import { LivreService } from '../Service/livre.service';
 import Swal from 'sweetalert2';
+import { SelectorMatcher } from '@angular/compiler';
+import { stringify } from 'querystring';
+import { User } from '../models/user';
+import { UserService } from '../Service/user.service';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-list-livre',
@@ -10,18 +15,37 @@ import Swal from 'sweetalert2';
 })
 export class ListLivreComponent implements OnInit {
 listLivre: Livre[]=[]
-  constructor(private livreservice : LivreService) { }
+listUser:User[]=[]
+admin:boolean=false
+  constructor(private livreservice : LivreService,private userservice : UserService) { }
 
   ngOnInit(): void {
+    
+
     this.livreservice.getAll().subscribe(
       data=>{
         this.listLivre=data;
         
       }
       )  
+      this.userservice.getAll().subscribe(
+        data=>{
+          this.listUser=data;
+          
+        }
+        )  
   }
-  getbyid(idlivre:number){
-    this.livreservice.getbyid(idlivre).subscribe(
+
+  isadmin(){
+    if(localStorage.getItem("role")=="Admin"){
+      this.admin=true;
+      return this.admin
+    }else{
+      return this.admin
+    }
+  }
+  getbyid(idLivre:number){
+    this.livreservice.getbyid(idLivre).subscribe(
       data=>(
         console.log(data)
       )
@@ -58,6 +82,54 @@ listLivre: Livre[]=[]
         }
       )}
    
+    })
+
+  }
+
+  emprunt(id:number){
+    Swal.fire({
+      title: 'Etes vous sur ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, Emprunter!'
+    }).then((result)=>{
+      if(result.value){
+        this.livreservice.emprunt(id).subscribe(
+          data=>{
+            if(data){
+              Swal.fire(
+                'Livre emprunté !',
+              ).then(()=>window.location.href="http://localhost:4200/livre")
+            }
+          }
+        )
+      }
+    })
+
+  }
+
+ rendre(id:number,livre:Livre){
+    Swal.fire({
+      title: 'Etes vous sur ?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, Rendre!'
+    }).then((result)=>{
+      if(result.value){
+        this.livreservice.annulation(id,livre).subscribe(
+          data=>{
+            if(data){
+              Swal.fire(
+                'Livre rendu !',
+              ).then(()=>window.location.href="http://localhost:4200/livre")
+            }
+          }
+        )
+      }
     })
 
   }

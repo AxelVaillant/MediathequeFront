@@ -1,5 +1,9 @@
 
 <h1>Liste des Livres</h1>
+<!-- <div class="form-group" id="bouton">
+    <label for="search">Rechercher</label>
+    <input name="search" type="text" class="form-control"  [(ngModel)]="search" >
+  </div> -->
 <table class="table table-striped" id="t1">
     <thead>
         <tr>
@@ -12,15 +16,17 @@
     </thead>
     <tbody>
         <tr *ngFor="let unLivre of listLivre">
-            <td>{{unLivre.idlivre}}</td>
+            <td>{{unLivre.idLivre}}</td>
             <td>{{unLivre.nomlivre}}</td>
             <td>{{unLivre.auteur}}</td>
-            <td>{{unLivre.description}}</td>
+            <td>{{unLivre.description}}</td>    
             <td>{{unLivre.quantite}}</td>
             <td>
-                <a [routerLink] = "['update/'+unLivre.idlivre]" class="btn btn-primary btn-sm"> Modifier </a>
-                <a type="submit" class="btn btn-danger btn-sm" (click)='deletelivre(unLivre.idlivre)' name="unLivre.idlivre" >Supprimer</a>
+                <a type="submit" class="btn btn-success btn-sm" (click)='emprunt(unLivre.idLivre)' name="unLivre.idLivre" >Emprunter</a>
+                <a type="submit" class="btn btn-warning btn-sm" (click)='rendre(unLivre.idLivre,unLivre)' name="unLivre.idLivre" >Rendre</a>
+                <a [routerLink] = "['update/'+unLivre.idLivre]" class="btn btn-primary btn-sm" *ngIf="isadmin()"> Modifier </a>
+                <a type="submit" class="btn btn-danger btn-sm" (click)='deletelivre(unLivre.idLivre)' name="unLivre.idLivre" *ngIf="isadmin()" >Supprimer</a>
             </td>
         </tr>
     </tbody>
-</table>
+</table>    

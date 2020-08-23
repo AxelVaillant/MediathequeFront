@@ -26,4 +26,10 @@ export class LivreService {
   delete(id:number){
     return this.http.post<Livre>('http://localhost:8080/livre/delete/'+id,{}).pipe()
   }
+  emprunt(id:number){
+    return this.http.put<Livre>('http://localhost:8080/livre/emprunt/'+id,localStorage.getItem("user")).pipe()
+  }
+  annulation(id:number, l : Livre){
+    return this.http.put<Livre>('http://localhost:8080/livre/annulation/'+id,l).pipe()
+  }
 }

@@ -16,9 +16,9 @@ newLivre :Livre= new Livre();
   createLivre(){
     this.livreservice.create(this.newLivre).subscribe(
       data=>{
-        if(data['idlivre']==0){
+        if(data['idLivre']==0){
 
-        }else if(data['idlivre']){
+        }else if(data['idLivre']){
           Swal.fire('Livre ajouté !',
           ).then(()=>window.location.href="http://localhost:4200/livre")
         }

@@ -1,0 +1,21 @@
+
+<h1>Notifications</h1>
+<table class="table table-striped" id="t1">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Date</th>
+            <th scope="col">Nom etudiant</th>
+            <th scope="col">Livre</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let unNotif of listNotif">
+            <td>{{unNotif.idNotif}}</td>
+            <td>{{unNotif.date|  date :'short':'UTC+2':'fr'}}</td>
+            <td>{{unNotif.nomEtudiant}}</td>
+            <td>{{unNotif.livre.nomlivre}}-{{unNotif.livre.auteur}}</td>
+        </tr>
+    </tbody>
+</table>
