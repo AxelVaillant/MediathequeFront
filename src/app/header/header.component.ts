@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleService } from '../Service/role.service';
 import { Role } from '../models/role';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,8 @@ import { Role } from '../models/role';
 })
 export class HeaderComponent implements OnInit {
 ListRole: Role[]=[];
-  constructor(private roleservice: RoleService) { }
-
+  constructor(private roleservice: RoleService,private router: Router) { }
+  admin:boolean=false
   ngOnInit(): void {
     this.roleservice.getAll().subscribe(
       data=>{
@@ -18,5 +19,16 @@ ListRole: Role[]=[];
       }
     )
   }
-
+  logout(){
+    localStorage.clear()
+    this.router.navigate(["user/login"]);
+  }
+  isadmin(){
+    if(localStorage.getItem("role")=="Admin"){
+      this.admin=true;
+      return this.admin
+    }else{
+      return this.admin
+    }
+  }
 }
